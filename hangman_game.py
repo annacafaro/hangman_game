@@ -11,7 +11,7 @@ Features for new realeses:
 
 
 
-
+import platform
 from numpy.random import randint
 from os import system
 import menu_and_ascii_sprites as SPRITES
@@ -21,6 +21,7 @@ FILE_PATH = './files/data.txt'
 
 
 def update_screen():
+    
     system('cls')
 
 
@@ -33,8 +34,9 @@ def red_data(file_path):
 
 
 def main():
+    PLATFORM = platform.system()
     #data = read_data(FILE_PATH)
-    print(SPRITES.menu)
+    #print(SPRITES.menu)
 
 
 if __name__ == '__main__':

@@ -25,6 +25,12 @@ FILE_PATH = './files/data.txt'
 
 
 def clear_screen(active_os):
+    """Cleans the console screen depending on the type 
+    of the Operating System you are on.
+
+    Args:
+        active_os (str): the Operating System of the coumputer
+    """
     if active_os == 'Windows':
         system('cls')
     elif active_os == 'Linux' or active_os == 'Darwin':
@@ -32,6 +38,15 @@ def clear_screen(active_os):
 
 
 def read_data(file_path):
+    """Reading the file of possible words to guess and assigning
+    them to a list. 
+
+    Args:
+        file_path (str): path where the file of data is stored
+
+    Returns:
+        list: the list of possible words to guess
+    """
     with open(file_path, 'r', encoding='utf-8') as f:
         words = [line.strip().lower() for line in f]
     return words
@@ -45,6 +60,9 @@ def get_player_guess(already_entered):
     Args:
         already_entered (list): concatenated list of the missed 
                                 and correctly-guessed letters
+
+    Returns:
+        str: the letter entered by the user
     """
     while True:  # Keep asking until the player enters a valid letter.
         print('Guess a letter.')
@@ -75,8 +93,8 @@ def draw_hangman(missed_letters, right_guessed, secret_word):
 
     # Replace blanks with correctly guessed letters
     for i in range(len(secret_word)):
-        if secretWord[i] in right_guessed:
-            blanks[i] = secretWord[i]
+        if secret_word[i] in right_guessed:
+            blanks[i] = secret_word[i]
 
     # Show the incorrectly guessed letters
     if len(missed_letters) == 0:
@@ -89,14 +107,16 @@ def draw_hangman(missed_letters, right_guessed, secret_word):
 
 def main():
 
-    # Detecting the Operative System for the clear_screen function. 
+    # Detecting the Operating System for the clear_screen function. 
     ACTIVE_OS = platform.system()
 
     # Set up for the variables of the game:
     missed_letters = []  # List of incorrect letter guesses.
     right_guessed = []  # List of correct letter guesses.
     data = read_data(FILE_PATH)
-    secret_word = data[randint(0, len(data))] # The word the player must guess. 
+    random_word = data[randint(0, len(data))]  # Choosing a random work of the list.
+    # The word the player must guess. After removing characters with accent marks.
+    secret_word = random_word.translate(random_word.maketrans('áéíóú', 'aeiou'))  
 
     game_status = int(input(SPRITES.MENU))
 

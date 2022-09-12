@@ -14,7 +14,7 @@ Features for new realeses:
 
 import platform
 import sys
-from numpy.random import randint
+from random import randint
 from os import system
 import menu_and_ascii_sprites as SPRITES
 
@@ -29,11 +29,9 @@ def update_screen(active_os):
         system('clear')
 
 
-def red_data(file_path):
-    words = []
+def read_data(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
-        for line in f:
-            words.append(line.stip().upper())
+        words = [line.strip().lower() for line in f]
     return words
 
 
@@ -43,7 +41,8 @@ def main():
     missed_letters = []
     right_guessed = []
 
-    #data = read_data(FILE_PATH)
+    data = read_data(FILE_PATH)
+    secret_word = data[randint(0, len(data))]
 
     game_status = int(input(SPRITES.MENU))
 

@@ -41,6 +41,10 @@ def get_player_guess(already_entered):
     """Returns the letter the player entered. Also, this function 
     checks whether the input is a valid character and a different
     letter from the previous inputs.
+
+    Args:
+        already_entered (list): concatenated list of the missed 
+                                and correctly-guessed letters
     """
     while True:  # Keep asking until the player enters a valid letter.
         print('Guess a letter.')
@@ -54,6 +58,33 @@ def get_player_guess(already_entered):
         else:
             return guess
 
+
+def draw_hangman(missed_letters, right_guessed, secret_word):
+    """Draw the current state of the hangman, along with the
+    missed and correctly-guessed letters of the secret word.
+
+    Args:
+        missed_letters (list): the missed letters
+        right_guessed (list): the correctly-guessed letters
+        secret_word (str): the secret word that the player needs to guess
+    """
+    print(SPRITES.HANGMAN_PICS[len(missed_letters)] + '\n\n')
+
+    # Display the blanks for the secret word (one blank per letter)
+    blanks = ['_'] * len(secret_word)
+
+    # Replace blanks with correctly guessed letters
+    for i in range(len(secret_word)):
+        if secretWord[i] in right_guessed:
+            blanks[i] = secretWord[i]
+
+    # Show the incorrectly guessed letters
+    if len(missed_letters) == 0:
+        print('\n\nGREAT JOB! No missed letters yet.')
+    print('\n\nOPS! Your missed letters are: ')
+    for letter in missed_letters:
+        print(letter + ', ')
+    print('\n\n')
 
 
 def main():

@@ -6,12 +6,14 @@ Python Version: 3.9.4
 This code is available at 
 
 Features for new realeses: 
-- update_screen() with any OS
+- add sprites for winner and loser
+- ask the language of the words and create a file with english words
 """
 
 
 
 import platform
+import sys
 from numpy.random import randint
 from os import system
 import menu_and_ascii_sprites as SPRITES
@@ -20,9 +22,11 @@ import menu_and_ascii_sprites as SPRITES
 FILE_PATH = './files/data.txt'
 
 
-def update_screen():
-    
-    system('cls')
+def update_screen(active_os):
+    if active_os == 'Windows':
+        system('cls')
+    elif active_os == 'Linux' or active_os == 'Darwin':
+        system('clear')
 
 
 def red_data(file_path):
@@ -34,10 +38,27 @@ def red_data(file_path):
 
 
 def main():
-    PLATFORM = platform.system()
+
+    ACTIVE_OS = platform.system()
+    missed_letters = []
+    right_guessed = []
+
     #data = read_data(FILE_PATH)
-    #print(SPRITES.menu)
+
+    game_status = int(input(SPRITES.MENU))
+
+    if game_status == 1: 
+        pass
+    else:
+        print(SPRITES.EXIT)
+        sys.exit()
+
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        # If 'Ctrl+C' is pressed, end the program. 
+        sys.exit()
+

@@ -1,4 +1,4 @@
-menu = """
+MENU = """
 WELCOME TO THE 
                  _                                             
                 | |                                            
@@ -26,8 +26,8 @@ ________________________________________________________________________by Anna 
                                    (/)(/)
                                     `""`
 
-Press '' to start
-Press '' to exit the game
+Press '1' to start
+Press '0' to exit the game
 """
 
 HANGMAN_PICS = [
@@ -188,7 +188,7 @@ HANGMAN_PICS = [
     """,
 
     """
-    ___________.._______
+     ___________.._______
     | .__________))______|
     | | / /      ||
     | |/ /       ||
@@ -218,8 +218,19 @@ HANGMAN_PICS = [
 WINNER = """
     🥳 CONGRATULATIONS! 🥳
             YOU WIN!
+
+    Press '1' to play again
+    Press '0' to exit
 """
 
 LOSER = """
     😔 GAME OVER! 😔
+
+    Press '1' to play again
+    Press '0' to exit
+"""
+
+EXIT = """
+    You have exited the game. 😔
+    If you want to go back, run the program again.
 """

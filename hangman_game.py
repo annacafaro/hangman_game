@@ -111,10 +111,10 @@ def main():
     ACTIVE_OS = platform.system()
 
     # Set up for the variables of the game:
-    missed_letters = []  # List of incorrect letter guesses.
-    right_guessed = []  # List of correct letter guesses.
+    missed_letters = []
+    right_guessed = []
     data = read_data(FILE_PATH)
-    random_word = data[randint(0, len(data))]  # Choosing a random work of the list.
+    random_word = data[randint(0, len(data))]
     # The word the player must guess. After removing characters with accent marks.
     secret_word = random_word.translate(random_word.maketrans('áéíóú', 'aeiou'))  
 

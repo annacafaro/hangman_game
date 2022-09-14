@@ -6,6 +6,7 @@ Python Version: 3.9.4
 This code is available at 
 
 Features for new realeses: 
+- add life warning
 - add sprites for winner and loser
 - ask the language of the words and create a file with english words
 - increase the difficulty of the words and add a clue system
@@ -101,7 +102,8 @@ def draw_hangman(missed_letters, right_guessed, secret_word):
     print('\n\nOPS! Your missed letters are: ')
     for letter in missed_letters:
         print(letter + ', ')
-    print('\n\n')
+    print(f'\n☠️   Be careful! You only have {len(SPRITES.HANGMAN_PICS)-len(missed_letters)} lives left.\n')
+    print(f'\t{'💔' * len(missed_letters)}.\n\n')
 
 
 def main():

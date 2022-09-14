@@ -103,7 +103,7 @@ def draw_hangman(missed_letters, right_guessed, secret_word):
     for letter in missed_letters:
         print(letter + ', ')
     print(f'\n☠️   Be careful! You only have {len(SPRITES.HANGMAN_PICS)-len(missed_letters)} lives left.\n')
-    print(f'\t{'💔' * len(missed_letters)}.\n\n')
+    print('\t{}.\n\n'.format('💔' * len(missed_letters)))
 
 
 def main():

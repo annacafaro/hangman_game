@@ -6,7 +6,6 @@ Python Version: 3.9.4
 This code is available at 
 
 Features for new realeses: 
-- improve the while-loop of get_player_guess
 - add sprites for winner and loser
 - ask the language of the words and create a file with english words
 - increase the difficulty of the words and add a clue system
@@ -68,11 +67,11 @@ def get_player_guess(already_entered):
         print('Guess a letter.')
         guess = input('-> ').lower()
         if len(guess) != 1:
-            raise ValueError('Please enter a single letter.')
+            print('\t⚠️   Please enter a single letter.\n')
         elif guess in already_entered:
-            print('You have already guessed that letter. Choose again.')
+            print('\t⚠️   You have already guessed that letter. Choose again.\n')
         elif not guess.isalpha():
-            raise ValueError('Please enter a letter. Numbers and other characters are not valid')
+            print('\t⚠️   Please enter a letter. Numbers and other characters are not valid.\n')
         else:
             return guess
 
